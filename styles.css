@@ -1,0 +1,196 @@
+/* Define estilos padrão para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Define a fonte Roboto Regular para elementos com a classe .roboto-regular */
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+}
+
+/* Estilos para o corpo da página */
+body {
+    /* Define uma imagem de fundo */
+    background-image: url("./img/background10.jpeg");
+    background-size: cover; /* Faz com que a imagem cubra toda a área da página */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-attachment: fixed; /* Mantém a imagem fixa no fundo ao rolar a página */
+}
+
+/* Estilos para o contêiner principal */
+.container {
+    background-color: #edf6f4; /* Cor de fundo */
+    width: 500px; /* Largura do contêiner */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    margin: 100px auto; /* Centraliza o contêiner na página */
+}
+
+/* Estilos para o campo de entrada de tarefas */
+.input-task {
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    width: 300px; /* Largura do campo */
+    height: 40px; /* Altura do campo */
+    padding-left: 10px; /* Espaçamento interno à esquerda */
+}
+
+/* Estilos para o botão de adicionar tarefa */
+.button-add-task {
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    height: 40px; /* Altura do botão */
+    background-color: #146531; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    font-size: 17px; /* Tamanho da fonte */
+    padding: 0 15px; /* Espaçamento interno */
+    float: right; /* Alinha à direita */
+    cursor: pointer; /* Cursor do mouse */
+    font-weight: 600; /* Peso da fonte */
+}
+
+/* Estilos para o hover do botão de adicionar tarefa */
+.button-add-task:hover {
+    opacity: 0.8; /* Opacidade reduzida ao passar o mouse */
+}
+
+/* Estilos para o clique do botão de adicionar tarefa */
+.button-add-task:active {
+    opacity: 0.6; /* Opacidade reduzida ao clicar */
+}
+
+/* Estilos para a lista de tarefas */
+.list-tasks{
+    width: 100%; /* Largura total */
+    list-style: none; /* Remove os marcadores de lista */
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+/* Estilos para cada tarefa */
+.task {
+    background-color: #d3e8e0; /* Cor de fundo */
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    height: 50px; /* Altura da tarefa */
+    display: flex; /* Usa um layout flexível */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    padding: 0 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    margin-bottom: 15px; /* Espaçamento inferior */
+}
+
+/* Estilos para as imagens dentro das tarefas */
+img {
+    height: 25px; /* Altura da imagem */
+    opacity: 0; /* Opacidade inicial */
+    transition: opacity 0.5s ease-in-out; /* Transição de opacidade suave */
+    cursor: pointer; /* Cursor do mouse */
+}
+
+/* Estilos para as imagens dentro das tarefas ao passar o mouse */
+.task:hover img {
+    opacity: 1; /* Opacidade aumentada ao passar o mouse */
+}
+
+/* Estilos para tarefas concluídas */
+.done {
+    background-color: #a1eebc; /* Cor de fundo */
+    text-decoration: line-through; /* Linha no texto */
+}
+
+/* Estilos contador ativas ou concluidas */
+.counter-box {
+    background-color: #d3e8e0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: #146531;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.filters {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #146531;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    opacity: 0.8;
+}
+
+.filter-btn.active {
+    background-color: #0e4824;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+body.dark {
+    background-color: #1f1f1f;
+}
+
+body.dark .container {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+body.dark .task {
+    background-color: #3b3b3b;
+}
+
+body.dark .done {
+    background-color: #146533;
+}
+
+.clock {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #146531;
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #146531;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para o modo escuro */
+body.dark .clock {
+    color: #a1eebc;
+}
+
+body.dark .title {
+    color: #a1eebc;
+}

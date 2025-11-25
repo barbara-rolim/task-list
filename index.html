@@ -1,0 +1,58 @@
+<!DOCTYPE html> <!--Define que este documento está usando a versão HTML5. -->
+<html lang="en"> <!-- Abre a tag <html> e define o idioma do conteúdo como inglês (en). -->
+
+<head>
+    <meta charset="UTF-8"> <!--Define a codificação de caracteres como UTF-8, 
+    permitindo a representação de muitos caracteres especiais. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Configura a viewport para que a
+    página seja exibida corretamente em dispositivos móveis. -->
+    <link rel="stylesheet" href="styles.css">
+    <!--Inclui um arquivo CSS externo (styles.css) para estilizar a página. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!--carrega a fonte "Roboto" do Google Fonts. -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <title>To Do List</title> <!--Define o título da página que será exibido na aba do navegador. -->
+</head>
+
+<body> 
+
+    <!-- Relógio fora do container -->
+    <p class="clock"></p>
+
+    <!-- Título -->
+    <h1 class="title">To Do List</h1>
+    
+    <!--Conteudo da pagina-->
+    <div class="container"> <!--Um contêiner que agrupa todos os elementos da lista de tarefas.-->
+
+        <button class="theme-toggle">🌙</button>
+
+        <input class="input-task" placeholder="New item...">
+        <!--exibe o texto "New item..." quando o campo está vazio.-->
+
+        <button class="button-add-task">Add</button>
+        <!--Um botão que, ao ser clicado, adiciona a nova tarefa à lista.-->
+
+        <div class="counter-box"><!--Uma classe que conta tarefas ja conluídas e ativas.-->
+            <span>Ativas: <span class="count-active">0</span></span>
+            <span>Concluídas: <span class="count-completed">0</span></span>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="active">Ativas</button>
+            <button class="filter-btn" data-filter="completed">Concluídas</button>
+        </div>
+
+
+        <ul class="list-tasks"> <!--Uma lista não ordenada (ul) que conterá as tarefas adicionadas.-->
+
+        </ul>
+    </div>
+</body>
+<script src="scripts.js"></script> <!--Inclui um arquivo JavaScript externo (scripts.js) que adicionará funcionalidade à página, 
+como adicionar novas tarefas à lista quando o botão é clicado. -->
+
+</html>
