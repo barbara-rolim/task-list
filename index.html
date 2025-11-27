@@ -16,14 +16,14 @@
     <title>To Do List</title> <!--Define o título da página que será exibido na aba do navegador. -->
 </head>
 
-<body> 
+<body>
 
     <!-- Relógio fora do container -->
     <p class="clock"></p>
 
     <!-- Título -->
     <h1 class="title">To Do List</h1>
-    
+
     <!--Conteudo da pagina-->
     <div class="container"> <!--Um contêiner que agrupa todos os elementos da lista de tarefas.-->
 
@@ -36,14 +36,14 @@
         <!--Um botão que, ao ser clicado, adiciona a nova tarefa à lista.-->
 
         <div class="counter-box"><!--Uma classe que conta tarefas ja conluídas e ativas.-->
-            <span>Ativas: <span class="count-active">0</span></span>
-            <span>Concluídas: <span class="count-completed">0</span></span>
+            <span>Active: <span class="count-active">0</span></span>
+            <span>Completed: <span class="count-completed">0</span></span>
         </div>
 
         <div class="filters">
-            <button class="filter-btn active" data-filter="all">Todas</button>
-            <button class="filter-btn" data-filter="active">Ativas</button>
-            <button class="filter-btn" data-filter="completed">Concluídas</button>
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
         </div>
 
 
@@ -51,6 +51,15 @@
 
         </ul>
     </div>
+
+    <div class="quote-box">
+        <p class="quote">Loading quote...</p>
+
+        <button id="new-quote" class="new-quote-btn">New inspirational quote!💡</button>
+    </div>
+
+
+
 </body>
 <script src="scripts.js"></script> <!--Inclui um arquivo JavaScript externo (scripts.js) que adicionará funcionalidade à página, 
 como adicionar novas tarefas à lista quando o botão é clicado. -->

@@ -1,4 +1,4 @@
-// Seletores principais (de acordo com SEU HTML)
+// Seletores principais
 const addItemButton = document.querySelector(".button-add-task");
 const input = document.querySelector(".input-task");
 const ul = document.querySelector(".list-tasks");
@@ -39,6 +39,13 @@ function showTasks() {
     checkBtn.className = "icon-check";
     checkBtn.addEventListener("click", () => completeTask(index));
 
+    // Botão editar
+    const editBtn = document.createElement("img");
+    editBtn.src = "./img/editar.png";
+    editBtn.alt = "Editar";
+    editBtn.className = "icon-edit";
+    editBtn.addEventListener("click", () => editTask(index));
+
     // Botão deletar
     const deleteBtn = document.createElement("img");
     deleteBtn.src = "./img/delete.png";
@@ -49,6 +56,7 @@ function showTasks() {
     // Montar estrutura
     li.appendChild(checkBtn);
     li.appendChild(p);
+    li.appendChild(editBtn);
     li.appendChild(deleteBtn);
 
     ul.appendChild(li);
@@ -90,9 +98,21 @@ function deleteTask(index) {
 }
 
 // -----------------------------
+//  EDITAR TAREFA
+// -----------------------------
+function editTask(index) {
+  const newText = prompt("Editar tarefa:", tasks[index].task);
+
+  if (newText === null) return; // cancelado
+  if (newText.trim() === "") return; // vazio
+
+  tasks[index].task = newText.trim();
+  showTasks();
+}
+
+// -----------------------------
 //  Contador
 // -----------------------------
-
 function updateCounter() {
   const activeCount = tasks.filter((t) => !t.completed).length;
   const completedCount = tasks.filter((t) => t.completed).length;
@@ -113,16 +133,11 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 
 filterButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
-    // Define o filtro atual
     currentFilter = btn.getAttribute("data-filter");
 
-    // Remove active dos outros botões
     filterButtons.forEach((b) => b.classList.remove("active"));
-
-    // Adiciona active no clicado
     btn.classList.add("active");
 
-    // Atualiza a lista conforme o filtro
     showTasks();
   });
 });
@@ -130,10 +145,8 @@ filterButtons.forEach((btn) => {
 // -----------------------------
 //  Claro ou Escuro
 // -----------------------------
-
 const themeToggle = document.querySelector(".theme-toggle");
 
-// Carrega o tema salvo
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme") || "light";
   document.body.classList.add(savedTheme);
@@ -147,8 +160,6 @@ themeToggle.addEventListener("click", () => {
 
   const theme = document.body.classList.contains("dark") ? "dark" : "light";
   themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
-
-  localStorage.setItem("theme", theme);
 });
 
 loadTheme();
@@ -156,32 +167,47 @@ loadTheme();
 // -----------------------------
 //  RELOGIO
 // -----------------------------
-
 function updateClock() {
-    const now = new Date();
+  const now = new Date();
 
-    const options = {
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-    };
+  const options = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
 
-    document.querySelector(".clock").textContent =
-        now.toLocaleDateString("pt-PT", options);
+  document.querySelector(".clock").textContent =
+    now.toLocaleDateString("pt-PT", options);
 }
 
-// Atualizar a cada 1 segundo
 setInterval(updateClock, 1000);
-
-// Mostrar imediatamente ao carregar
 updateClock();
 
+// -----------------------------
+//  Frases Motivacionais (API)
+// -----------------------------
+function loadQuote() {
+  const quoteText = document.querySelector(".quote");
 
-// -----------------------------
-//  RECARREGAR AO ABRIR A PÁGINA
-// -----------------------------
-loadTasks();
+  fetch("https://api.adviceslip.com/advice")
+    .then(response => response.json())
+    .then(data => {
+
+      quoteText.textContent = `"${data.slip.advice}"`;
+      
+    })
+    .catch((error) => {
+      console.log(error);
+      quoteText.textContent = "Não foi possível carregar a frase 😔";
+    });
+}
+
+document.getElementById("new-quote").addEventListener("click", loadQuote);
+console.log("new-quote");
+console.log("loadQuote");
+
+loadQuote();

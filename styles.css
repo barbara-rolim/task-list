@@ -21,6 +21,11 @@ body {
     background-attachment: fixed; /* Mantém a imagem fixa no fundo ao rolar a página */
 }
 
+body.dark {
+    background-image: url("./img/background10.jpeg");
+    background-blend-mode: overlay;
+}
+
 /* Estilos para o contêiner principal */
 .container {
     background-color: #edf6f4; /* Cor de fundo */
@@ -193,4 +198,48 @@ body.dark .clock {
 
 body.dark .title {
     color: #a1eebc;
+}
+
+.quote-box {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 1px 4px 10px rgba(0,0,0,0.15);
+}
+
+.quote {
+    font-size: 16px;
+    font-weight: 500;
+    color: #146531;
+    margin-bottom: 10px;
+}
+
+.new-quote-btn {
+    padding: 8px 15px;
+    background-color: #146531;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.new-quote-btn:hover {
+    opacity: 0.8;
+}
+
+/* Dark Mode */
+body.dark .quote-box {
+    background-color: rgba(0,0,0,0.4);
+}
+
+body.dark .quote {
+    color: #a1eebc;
+}
+
+body.dark .new-quote-btn {
+    background-color: #0e4824;
 }
