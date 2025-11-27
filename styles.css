@@ -231,10 +231,6 @@ body.dark .title {
     opacity: 0.8;
 }
 
-/* Dark Mode */
-body.dark .quote-box {
-    background-color: rgba(0,0,0,0.4);
-}
 
 body.dark .quote {
     color: #a1eebc;
