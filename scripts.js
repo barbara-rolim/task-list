@@ -1,4 +1,6 @@
-// Seletores principais
+// -----------------------------
+//  SELETORES PRINCIPAIS
+// -----------------------------
 const addItemButton = document.querySelector(".button-add-task");
 const input = document.querySelector(".input-task");
 const ul = document.querySelector(".list-tasks");
@@ -8,6 +10,9 @@ let tasks = [];
 
 // filtro all | active | completed
 let currentFilter = "all";
+
+// índice da tarefa que está sendo editada (null = não editando)
+let editingIndex = null;
 
 // -----------------------------
 //  EXIBIR TAREFAS NA TELA
@@ -23,7 +28,10 @@ function showTasks() {
     filteredTasks = tasks.filter((t) => t.completed);
   }
 
-  filteredTasks.forEach((item, index) => {
+  filteredTasks.forEach((item) => {
+    // pega o índice real no array principal
+    const index = tasks.indexOf(item);
+
     const li = document.createElement("li");
     li.className = item.completed ? "task done" : "task";
 
@@ -60,22 +68,30 @@ function showTasks() {
     li.appendChild(deleteBtn);
 
     ul.appendChild(li);
-
-    updateCounter();
   });
+
+  updateCounter();
 }
 
 // -----------------------------
-//  ADICIONAR TAREFA
+//  ADICIONAR / SALVAR TAREFA
 // -----------------------------
 function addNewTask() {
   const text = input.value.trim();
   if (text === "") return;
 
-  tasks.push({
-    task: text,
-    completed: false,
-  });
+  // Se estiver editando uma tarefa existente
+  if (editingIndex !== null) {
+    tasks[editingIndex].task = text;
+    editingIndex = null; // volta ao modo "adicionar"
+    addItemButton.textContent = "Add";
+  } else {
+    // Modo normal: adicionar nova tarefa
+    tasks.push({
+      task: text,
+      completed: false,
+    });
+  }
 
   input.value = "";
   showTasks();
@@ -94,24 +110,31 @@ function completeTask(index) {
 // -----------------------------
 function deleteTask(index) {
   tasks.splice(index, 1);
+
+  // Se deletar a tarefa que estava sendo editada, reseta o estado
+  if (editingIndex === index) {
+    editingIndex = null;
+    addItemButton.textContent = "Add";
+    input.value = "";
+  }
+
   showTasks();
 }
 
 // -----------------------------
-//  EDITAR TAREFA
+//  EDITAR TAREFA 
 // -----------------------------
 function editTask(index) {
-  const newText = prompt("Editar tarefa:", tasks[index].task);
+  const task = tasks[index];
 
-  if (newText === null) return; // cancelado
-  if (newText.trim() === "") return; // vazio
-
-  tasks[index].task = newText.trim();
-  showTasks();
+  input.value = task.task;           // coloca o texto no input
+  input.focus();                     // foca no input
+  editingIndex = index;              // guarda qual tarefa está sendo editada
+  addItemButton.textContent = "✅ Save edit"; // feedback visual
 }
 
 // -----------------------------
-//  Contador
+//  CONTADOR
 // -----------------------------
 function updateCounter() {
   const activeCount = tasks.filter((t) => !t.completed).length;
@@ -125,6 +148,13 @@ function updateCounter() {
 //  EVENTO DO BOTÃO
 // -----------------------------
 addItemButton.addEventListener("click", addNewTask);
+
+// (opcional) adicionar com Enter no input
+input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    addNewTask();
+  }
+});
 
 // -----------------------------
 //  FILTROS
@@ -150,7 +180,6 @@ const themeToggle = document.querySelector(".theme-toggle");
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme") || "light";
   document.body.classList.add(savedTheme);
-
   themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
 }
 
@@ -160,6 +189,8 @@ themeToggle.addEventListener("click", () => {
 
   const theme = document.body.classList.contains("dark") ? "dark" : "light";
   themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+
+  localStorage.setItem("theme", theme);
 });
 
 loadTheme();
@@ -194,11 +225,9 @@ function loadQuote() {
   const quoteText = document.querySelector(".quote");
 
   fetch("https://api.adviceslip.com/advice")
-    .then(response => response.json())
-    .then(data => {
-
+    .then((response) => response.json())
+    .then((data) => {
       quoteText.textContent = `"${data.slip.advice}"`;
-      
     })
     .catch((error) => {
       console.log(error);

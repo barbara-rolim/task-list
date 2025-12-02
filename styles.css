@@ -1,4 +1,4 @@
-/* Define estilos padrão para todos os elementos */
+/* Remove margens e paddings padrão e ativa o box model moderno */
 * {
     margin: 0;
     padding: 0;
@@ -6,108 +6,104 @@
     outline: none;
 }
 
-/* Define a fonte Roboto Regular para elementos com a classe .roboto-regular */
+/* Fonte padrão Roboto para elementos com essa classe */
 .roboto-regular {
     font-family: "Roboto", sans-serif;
 }
 
-/* Estilos para o corpo da página */
+/* ======== ESTILOS DO BODY ======== */
 body {
-    /* Define uma imagem de fundo */
-    background-image: url("./img/background10.jpeg");
-    background-size: cover; /* Faz com que a imagem cubra toda a área da página */
+    background-image: url("./img/background10.jpeg"); /* Imagem de fundo */
+    background-size: cover; /* Ocupa toda a tela */
     background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
-    background-attachment: fixed; /* Mantém a imagem fixa no fundo ao rolar a página */
+    background-repeat: no-repeat; /* Não repete */
+    background-attachment: fixed; /* Fica fixa ao rolar página */
 }
 
+/* Tema escuro */
 body.dark {
     background-image: url("./img/background10.jpeg");
-    background-blend-mode: overlay;
+    background-blend-mode: overlay; /* Mistura cor com imagem */
 }
 
-/* Estilos para o contêiner principal */
+/* ======== CONTAINER PRINCIPAL ======== */
 .container {
-    background-color: #edf6f4; /* Cor de fundo */
-    width: 500px; /* Largura do contêiner */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 20px; /* Espaçamento interno */
-    margin: 100px auto; /* Centraliza o contêiner na página */
+    background-color: #edf6f4; /* Fundo claro */
+    width: 500px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 100px auto; /* Centraliza na tela */
 }
 
-/* Estilos para o campo de entrada de tarefas */
+/* ======== INPUT DE TAREFA ======== */
 .input-task {
-    border: none; /* Remove a borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    width: 300px; /* Largura do campo */
-    height: 40px; /* Altura do campo */
-    padding-left: 10px; /* Espaçamento interno à esquerda */
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+    padding-left: 10px; /* Espaço interno */
 }
 
-/* Estilos para o botão de adicionar tarefa */
+/* ======== BOTÃO ADD ======== */
 .button-add-task {
-    border: none; /* Remove a borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    height: 40px; /* Altura do botão */
-    background-color: #146531; /* Cor de fundo */
-    color: #fff; /* Cor do texto */
-    font-size: 17px; /* Tamanho da fonte */
-    padding: 0 15px; /* Espaçamento interno */
-    float: right; /* Alinha à direita */
-    cursor: pointer; /* Cursor do mouse */
-    font-weight: 600; /* Peso da fonte */
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    background-color: #146531; /* Verde escuro */
+    color: #fff;
+    font-size: 17px;
+    padding: 0 15px;
+    float: right; /* Encosta à direita */
+    cursor: pointer;
+    font-weight: 600;
 }
-
-/* Estilos para o hover do botão de adicionar tarefa */
 .button-add-task:hover {
-    opacity: 0.8; /* Opacidade reduzida ao passar o mouse */
+    opacity: 0.8; /* Leve fade */
 }
-
-/* Estilos para o clique do botão de adicionar tarefa */
 .button-add-task:active {
-    opacity: 0.6; /* Opacidade reduzida ao clicar */
+    opacity: 0.6;
 }
 
-/* Estilos para a lista de tarefas */
-.list-tasks{
-    width: 100%; /* Largura total */
-    list-style: none; /* Remove os marcadores de lista */
-    margin-top: 20px; /* Espaçamento superior */
+/* ======== LISTA DE TAREFAS ======== */
+.list-tasks {
+    width: 100%;
+    list-style: none;
+    margin-top: 20px;
 }
 
-/* Estilos para cada tarefa */
+/* Cada item da lista */
 .task {
-    background-color: #d3e8e0; /* Cor de fundo */
-    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
-    height: 50px; /* Altura da tarefa */
-    display: flex; /* Usa um layout flexível */
-    align-items: center; /* Alinha verticalmente */
-    justify-content: space-between; /* Distribui o espaço entre os itens */
-    padding: 0 15px; /* Espaçamento interno */
-    border-radius: 5px; /* Bordas arredondadas */
-    margin-bottom: 15px; /* Espaçamento inferior */
+    background-color: #d3e8e0;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
+    height: 50px;
+    display: flex; /* Layout horizontal */
+    align-items: center; /* Centraliza vertical */
+    justify-content: space-between; /* Ícones nos cantos */
+    padding: 0 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
-/* Estilos para as imagens dentro das tarefas */
+/* Ícones dos botões (check, delete, edit) */
 img {
-    height: 25px; /* Altura da imagem */
-    opacity: 0; /* Opacidade inicial */
-    transition: opacity 0.5s ease-in-out; /* Transição de opacidade suave */
-    cursor: pointer; /* Cursor do mouse */
+    height: 25px;
+    opacity: 0; /* Ícones só aparecem no hover */
+    transition: opacity 0.5s ease-in-out;
+    cursor: pointer;
 }
 
-/* Estilos para as imagens dentro das tarefas ao passar o mouse */
+/* Mostra os ícones quando o mouse passa */
 .task:hover img {
-    opacity: 1; /* Opacidade aumentada ao passar o mouse */
+    opacity: 1;
 }
 
-/* Estilos para tarefas concluídas */
+/* Tarefa concluída */
 .done {
-    background-color: #a1eebc; /* Cor de fundo */
-    text-decoration: line-through; /* Linha no texto */
+    background-color: #a1eebc;
+    text-decoration: line-through; /* Risco no texto */
 }
 
-/* Estilos contador ativas ou concluidas */
+/* ======== CAIXA DE CONTADOR ======== */
 .counter-box {
     background-color: #d3e8e0;
     padding: 10px 15px;
@@ -121,12 +117,14 @@ img {
     box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* ======== FILTROS (ALL / ACTIVE / COMPLETED) ======== */
 .filters {
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
 }
 
+/* Botões de filtro */
 .filter-btn {
     padding: 8px 15px;
     border: none;
@@ -137,15 +135,14 @@ img {
     font-weight: 600;
     transition: 0.3s;
 }
-
 .filter-btn:hover {
     opacity: 0.8;
 }
-
 .filter-btn.active {
-    background-color: #0e4824;
+    background-color: #0e4824; /* Diferencia o filtro ativo */
 }
 
+/* ======== BOTÃO DE TEMA ======== */
 .theme-toggle {
     position: absolute;
     top: 20px;
@@ -156,23 +153,22 @@ img {
     cursor: pointer;
 }
 
+/* Ajustes do tema escuro */
 body.dark {
     background-color: #1f1f1f;
 }
-
 body.dark .container {
     background-color: #2a2a2a;
     color: #fff;
 }
-
 body.dark .task {
     background-color: #3b3b3b;
 }
-
 body.dark .done {
     background-color: #146533;
 }
 
+/* ======== RELÓGIO ======== */
 .clock {
     text-align: center;
     font-size: 18px;
@@ -180,7 +176,11 @@ body.dark .done {
     margin-top: 30px;
     color: #146531;
 }
+body.dark .clock {
+    color: #a1eebc;
+}
 
+/* ======== TÍTULO ======== */
 .title {
     text-align: center;
     font-size: 32px;
@@ -190,19 +190,14 @@ body.dark .done {
     color: #146531;
     letter-spacing: 1px;
 }
-
-/* Ajuste para o modo escuro */
-body.dark .clock {
-    color: #a1eebc;
-}
-
 body.dark .title {
     color: #a1eebc;
 }
 
+/* ======== FRASES MOTIVACIONAIS ======== */
 .quote-box {
     background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px); /* Efeito vidro */
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -216,7 +211,11 @@ body.dark .title {
     color: #146531;
     margin-bottom: 10px;
 }
+body.dark .quote {
+    color: #a1eebc;
+}
 
+/* Botão nova frase */
 .new-quote-btn {
     padding: 8px 15px;
     background-color: #146531;
@@ -226,16 +225,17 @@ body.dark .title {
     font-weight: 600;
     cursor: pointer;
 }
-
 .new-quote-btn:hover {
     opacity: 0.8;
 }
-
-
-body.dark .quote {
-    color: #a1eebc;
-}
-
 body.dark .new-quote-btn {
     background-color: #0e4824;
+}
+
+/* ======== EDIÇÃO INLINE (contentEditable) ======== */
+.task-text.editing {
+    outline: 2px solid #4caf50; /* Borda verde enquanto edita */
+    background: #e8ffe8; /* Fundo claro */
+    border-radius: 4px;
+    padding: 2px 4px;
 }
